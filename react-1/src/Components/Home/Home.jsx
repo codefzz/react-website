@@ -1,15 +1,18 @@
 import React from 'react'
-import './Home.module.scss'
+import styles from './Home.module.scss'
+import Hero from '../../Components/Layout/Hero'
+import CategoryList from '../../Components/Layout/CategoryList'
 
 //import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <div>
-        <h1>Home Page</h1>
-        <p>Welcome to the Home Page!</p>
-    </div>
-  )
+    <>
+     <Hero />
+     <CategoryList />
+    </> 
+        
+  )  
 }
 
 export default Home

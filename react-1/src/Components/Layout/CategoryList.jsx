@@ -38,7 +38,7 @@ function CategoryList() {
  //<Icona fontSize={48} /> 
  //const CategoryList = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick=()>
       {categories.map((category)=> (
       <div className={styles.a} >
         <div className={styles.card} key={category.title}> 
