@@ -1,34 +1,68 @@
 import React, { useState } from 'react'
-import ReactDom from "react-dom/client"
 import { Routes, Route} from 'react-router-dom'
-//import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
-import Hero from './Components/Layout/Hero'
+import { LoginPage } from './Components/Account/LogIn'
+import { Secret } from './Components/Account/Secret'
 import AboutUs from './Components/AboutUs/AboutUs'
 import Services from './Components/Services/Services'
 import Home from './Components/Home/Home'
 import Navbar from './Components/Layout/Navbar'
-//import Navigation from './Components/Routes/Navigation'
-import CategoryList from './Components/Layout/CategoryList'
+//import Categories from './Components/Services/Categories'
 //import './App.module.scss'
-
-
+import { ProtectedRoute } from './hooks/ProtectedRoute'
+import { AuthProvider } from './hooks/useAuth'
 
 const App = () => {
+
+  function CatList() {
+    const categories = [
+      {
+        icon: cleaning,
+        title: "Cleaning"
+      },
+      {
+        icon: repair,
+        title: "Repair"
+      },{
+        icon: paint,
+        title: "Paint"
+      },{
+        icon: moving,
+        title: "Moving"
+      },{
+        icon: plumbing,
+        title: "Plumbing"
+      },{
+        icon: electric,
+        title: "Electric"
+      },
+    ];
+  }
   return (
     <>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/about" element={<AboutUs />} />
-             
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/secret" element={
+            <ProtectedRoute>
+              <Secret />
+            </ProtectedRoute>
+            } />
+        </Routes>
+      </AuthProvider>
     </> 
     
-  )
+  );
+
 };
 
+//<Route path="/contacts/:Id" element={<Contacts />} />
 //<Route path="*" element={<Nomach />} />
+//<Route path="/categories/:serviceId" element={<Categories />} />
 
 export default App
 

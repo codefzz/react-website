@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.scss';
 import logo from '../../assets/logo-course.svg';
 import { BrowserRouter, Router, Route, Link, Routes } from 'react-router-dom';
@@ -9,16 +9,21 @@ import AboutUs from '../AboutUs/AboutUs';
 import { RiH1 } from 'react-icons/ri';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   return (
-    <nav className="">
-     <img src={logo} alt="" />
-     <ul>
-      <li><NavLink to="/" >Home</NavLink></li> 
-      <li><NavLink to="/services">Services</NavLink></li> 
-      <li><NavLink to="/about">About Us</NavLink></li> 
-      <li className={styles.libtn}><button className={styles.btn}>Login / Sign Up</button></li>
-     </ul>
-    </nav>
+    <>
+      <nav className="">
+        <img src={logo} alt="" />
+        <ul>
+          <li><Link to="/" >Home</Link></li> 
+          <li><Link to="/services">Services</Link></li> 
+          <li><Link to="/about">About Us</Link></li> 
+          <li><Link to="/services/serviceID">Services </Link></li> 
+          <li className={styles.libtn}><button className={styles.btn} onClick={() => navigate("/login")}>Login / Sign Up</button></li>
+        </ul>
+      </nav>
+    </>
   )
 }
 //<li><Link to={<Home/>}>Home</Link></li>

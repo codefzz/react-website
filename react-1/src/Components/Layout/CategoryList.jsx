@@ -6,13 +6,14 @@ import moving from '../../assets/moving.png'
 import plumbing from '../../assets/plumbing.png'
 import electric from '../../assets/electric.png'
 //import styles from './CategoryList.css'
-//import CategoryCard from '../Services/CategoryCard'
+import Categories from '../Services/Categories'
+import { useParams } from 'react-router-dom'
 import styles from './CategoryList.module.scss'
 //import { useState } from 'react'
-//import { redirectDocument } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function CategoryList() {
-  const categories = [
+  const cat = [
     {
       icon: cleaning,
       title: "Cleaning"
@@ -35,15 +36,15 @@ function CategoryList() {
     },
   ];
 
- //<Icona fontSize={48} /> 
+ const params = useParams()
  //const CategoryList = () => {
   return (
-    <div className={styles.container} onClick=()>
-      {categories.map((category)=> (
+    <div className={styles.container}>
+      {cat.map((category)=> (
       <div className={styles.a} >
         <div className={styles.card} key={category.title}> 
           <img className={styles.icon} src={category.icon} alt="" />
-          <h2 className={styles.title}>{category.title} </h2>
+          <Link to={`/categories/${category.title}`}><h2 className={styles.title}>{category.title} </h2></Link>
         </div>
       </div> 
         
