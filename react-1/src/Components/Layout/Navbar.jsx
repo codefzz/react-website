@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.scss';
 import logo from '../../assets/logo-course.svg';
+//import { username } from './Components/Account/Profile'
 import { BrowserRouter, Router, Route, Link, Routes } from 'react-router-dom';
 import Services from '../Services/Services';
 import Home from '../Home/Home';
 import AboutUs from '../AboutUs/AboutUs';
 import { RiH1 } from 'react-icons/ri';
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const { loggedIn, username } = props;
   const navigate = useNavigate();
+
+  const onButtonClick = (props) => { 
+    //
+  }
+  //const [username, setUsername] = useState("Iamuser")
 
   return (
     <>
-      <nav className="">
+      <nav className={styles.nav}>
         <img src={logo} alt="" />
         <ul>
           <li><Link to="/" >Home</Link></li> 
-          <li><Link to="/services">Services</Link></li> 
+          
           <li><Link to="/about">About Us</Link></li> 
           <li><Link to="/services/serviceID">Services </Link></li> 
           <li className={styles.libtn}><button className={styles.btn} onClick={() => navigate("/login")}>Login / Sign Up</button></li>
@@ -26,6 +33,8 @@ const Navbar = () => {
     </>
   )
 }
+//<li className={styles.libtn}><button className={styles.btn} onClick={() => navigate("/login")}>Login / Sign Up</button></li>
+        
 //<li><Link to={<Home/>}>Home</Link></li>
 export default Navbar
 

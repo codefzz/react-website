@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Routes, Route} from 'react-router-dom'
 import { LoginPage } from './Components/Account/LogIn'
 import { Secret } from './Components/Account/Secret'
+import Profile from './Components/Account/Profile'
 import AboutUs from './Components/AboutUs/AboutUs'
 import Services from './Components/Services/Services'
 import Home from './Components/Home/Home'
@@ -10,6 +11,7 @@ import Navbar from './Components/Layout/Navbar'
 //import './App.module.scss'
 import { ProtectedRoute } from './hooks/ProtectedRoute'
 import { AuthProvider } from './hooks/useAuth'
+
 
 const App = () => {
 
@@ -44,7 +46,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
-          
+          <Route path="/profile" element={<Profile />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/secret" element={
@@ -60,12 +62,16 @@ const App = () => {
 
 };
 
+
+export default App
+
 //<Route path="/contacts/:Id" element={<Contacts />} />
 //<Route path="*" element={<Nomach />} />
 //<Route path="/categories/:serviceId" element={<Categories />} />
 
-export default App
 
+//<Route path="/profile" element={<Profile username={username}/>} />
+          
 /*
 
 <div className="">
